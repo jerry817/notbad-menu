@@ -1,0 +1,36 @@
+<!--pages/favorites/favorites.wxml 收藏夹-->
+<view class="page-pad">
+
+  <view wx:if="{{loading}}" class="loading-inline">
+    <view class="loading-dot"></view>
+    <text>加载中…</text>
+  </view>
+
+  <block wx:else>
+  <view class="card recipe-row" wx:for="{{list}}" wx:key="id">
+    <image wx:if="{{item.coverImageUrl}}" class="cover recipe-row-cover" src="{{item.coverImageUrl}}" mode="aspectFill" lazy-load="{{true}}" bindtap="goDetail" data-id="{{item.id}}" />
+    <view wx:else class="cover recipe-row-cover" bindtap="goDetail" data-id="{{item.id}}"></view>
+    <view class="col flex-1 recipe-row-info" bindtap="goDetail" data-id="{{item.id}}">
+      <view class="recipe-row-title ellipsis">{{item.title}}</view>
+      <view class="recipe-row-desc ellipsis-2">{{item.desc}}</view>
+      <view class="row">
+        <text class="tag tag-hot">{{item.difficulty}}</text>
+        <text class="recipe-row-meta-text">{{item.time}}分钟</text>
+      </view>
+    </view>
+    <text class="recipe-row-remove" catchtap="unfavorite" data-id="{{item.id}}">💔</text>
+  </view>
+
+  <view wx:if="{{!list.length && isLoggedIn}}" class="empty">
+    <text class="empty-emoji">🤍</text>
+    收藏夹空空的，看到心动的菜谱点亮小心心吧
+  </view>
+
+  <view wx:if="{{!list.length && !isLoggedIn}}" class="empty" bindtap="goLogin">
+    <text class="empty-emoji">🔒</text>
+    登录后即可收藏心动菜谱
+    <text class="fav-login-btn">去登录</text>
+  </view>
+  </block>
+
+</view>

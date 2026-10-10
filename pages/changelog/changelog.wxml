@@ -1,0 +1,19 @@
+<!--pages/changelog/changelog.wxml 关于 · 版本更新日志-->
+<view class="page-pad">
+
+  <view class="about-card">
+    <view class="app-name">{{appMeta.name}}</view>
+    <view class="app-slogan">{{appMeta.slogan}}</view>
+    <view class="app-version">当前版本 v{{appMeta.version}}</view>
+  </view>
+
+  <view class="section-title">更新日志</view>
+  <view class="card log-item" wx:for="{{changelog}}" wx:key="version">
+    <view class="row between log-head">
+      <text class="log-version">v{{item.version}}</text>
+      <text class="log-date">{{item.date}}</text>
+    </view>
+    <view class="log-note" wx:for="{{item.notes}}" wx:for-item="note" wx:key="*this">· {{note}}</view>
+  </view>
+
+</view>

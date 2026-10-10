@@ -1,0 +1,114 @@
+<!--pages/mine/mine.wxml 我的-->
+<view class="page-pad">
+
+  <!-- 用户卡片：登录 / 未登录两种状态 -->
+  <view class="user-card" wx:if="{{session}}">
+    <image wx:if="{{session.avatarUrl}}" class="user-avatar-img" src="{{session.avatarUrl}}" />
+    <text wx:else class="user-avatar ">🙋</text>
+    <view class="col flex-1">
+      <view class="user-name">{{session.nickname}}</view>
+      <view class="user-sub">食 · 味 · 生活</view>
+    </view>
+    <text class="logout-btn" bindtap="logout">退出</text>
+  </view>
+  <view class="user-card user-card-guest" wx:else bindtap="goLogin">
+    <image class="user-avatar-img" src="/assets/tabbar/logo-inside.png" mode="aspectFill"></image>
+    <view class="col flex-1">
+      <view class="user-name">点击登录</view>
+      <view class="user-sub">登录解锁更多功能</view>
+    </view>
+    <text class="login-arrow">›</text>
+  </view>
+
+  <!-- 统计面板：收藏 / 我的菜谱 / 聊天记录 -->
+  <view class="card stat-card">
+    <view class="stat-panel">
+      <view class="stat-item" bindtap="goFavorites">
+        <view wx:if="{{loadingFav}}" class="loading-dot stat-loading-dot"></view>
+        <view wx:else class="stat-value">{{stats.fav}}</view>
+        <view class="stat-label">收藏</view>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item" bindtap="goMyRecipes">
+        <view wx:if="{{loadingMine}}" class="loading-dot stat-loading-dot"></view>
+        <view wx:else class="stat-value">{{stats.mine}}</view>
+        <view class="stat-label">我的菜谱</view>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item" bindtap="goChatList">
+        <view wx:if="{{loadingChat}}" class="loading-dot stat-loading-dot"></view>
+        <view wx:else class="stat-value">{{stats.chat}}</view>
+        <view class="stat-label">聊天记录</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能入口 -->
+  <view class="card func-list">
+    <view class="func-row" bindtap="feedback">
+      <text class="func-icon">💬</text>
+      <text class="func-label flex-1">意见反馈</text>
+      <text class="func-arrow">›</text>
+    </view>
+    <view class="func-row" bindtap="goChangelog">
+      <text class="func-icon">🏷</text>
+      <text class="func-label flex-1">关于 · 版本更新</text>
+      <text class="func-arrow">›</text>
+    </view>
+    <view class="func-row" bindtap="resetLocalData">
+      <text class="func-icon">🧹</text>
+      <text class="func-label flex-1">清除本地缓存</text>
+      <text class="func-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 我的菜谱：主页只预览最近 3 条，其余进二级菜单 -->
+  <view class="section-title row between">
+    <text>最近发布</text>
+    <text class="muted-action" wx:if="{{stats.mine > 3}}" bindtap="goMyRecipes">查看全部 ›</text>
+  </view>
+  <view wx:if="{{loadingMine}}" class="loading-inline loading-inline-compact">
+    <view class="loading-dot"></view>
+    <text>加载中…</text>
+  </view>
+  <block wx:else>
+    <view class="card my-card" wx:for="{{myRecipes}}" wx:key="id">
+      <image wx:if="{{item.coverImageUrl}}" class="cover my-cover" src="{{item.coverImageUrl}}" mode="aspectFill" lazy-load="{{true}}" bindtap="goDetail" data-id="{{item.id}}" />
+      <view wx:else class="cover my-cover" bindtap="goDetail" data-id="{{item.id}}"></view>
+      <view class="col flex-1 my-info" bindtap="goDetail" data-id="{{item.id}}">
+        <view class="my-title ellipsis">{{item.title}}</view>
+        <view class="my-sub">{{item.time}}分钟 · {{item.difficulty}}</view>
+      </view>
+      <text class="my-remove" catchtap="removeMine" data-id="{{item.id}}">删除</text>
+    </view>
+    <view wx:if="{{!myRecipes.length}}" class="card empty-lite">
+      还没有自创菜谱，去「发布」晒出你的拿手菜吧
+    </view>
+  </block>
+
+  <!-- 浏览历史：只展示最近 8 条 -->
+  <view class="section-title row between">
+    <text>最近浏览</text>
+    <text class="muted-action" wx:if="{{historyList.length}}" bindtap="clearHistory">清空</text>
+  </view>
+  <view wx:if="{{loadingHistory}}" class="loading-inline loading-inline-compact">
+    <view class="loading-dot"></view>
+    <text>加载中…</text>
+  </view>
+  <block wx:else>
+    <view class="hist-wrap">
+      <view class="hist-item" wx:for="{{historyList}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+        <image wx:if="{{item.coverImageUrl}}" class="hist-cover" src="{{item.coverImageUrl}}" mode="aspectFill" lazy-load="{{true}}" />
+        <view wx:else class="hist-cover"></view>
+        <view class="hist-name ellipsis">{{item.title}}</view>
+      </view>
+    </view>
+    <view wx:if="{{!historyList.length}}" class="card empty-lite">
+      暂无浏览记录，去首页逛逛吧
+    </view>
+  </block>
+
+  <!-- 页脚 -->
+  <view class="footer">味不孬 v{{appVersion}}</view>
+
+</view>

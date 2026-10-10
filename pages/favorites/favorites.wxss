@@ -1,0 +1,12 @@
+/* pages/favorites/favorites.wxss */
+/* 列表行样式已提取为全局共用类 .recipe-row-*（见 app.wxss），本页只补充未登录引导。 */
+.fav-login-btn {
+  display: block;
+  width: 280rpx;
+  margin: 32rpx auto 0;
+  padding: 18rpx 0;
+  border-radius: 999rpx;
+  background: #e8552f;
+  color: #fff;
+  font-size: 26rpx;
+}

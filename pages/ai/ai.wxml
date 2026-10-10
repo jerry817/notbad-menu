@@ -1,0 +1,28 @@
+<!--pages/ai/ai.wxml 美食助手-->
+<view class="ai-page">
+
+  <scroll-view class="msg-scroll" scroll-y scroll-into-view="{{scrollTo}}">
+    <view class="msg-row {{item.role === 'user' ? 'msg-row-user' : ''}}" wx:for="{{messages}}" wx:key="index">
+      <view class="msg-bubble {{item.role === 'user' ? 'bubble-user' : 'bubble-ai'}}">{{item.text}}</view>
+    </view>
+    <view wx:if="{{loading}}" class="msg-row">
+      <view class="msg-bubble bubble-ai">Loding…</view>
+    </view>
+    <view id="msg-bottom"></view>
+  </scroll-view>
+
+  <scroll-view class="suggestion-scroll" scroll-x enable-flex wx:if="{{messages.length < 2}}">
+    <text class="suggestion-chip" wx:for="{{suggestions}}" wx:key="*this"
+      bindtap="onSuggestion" data-text="{{item}}">{{item}}</text>
+  </scroll-view>
+
+  <view class="input-bar"
+    style="padding-bottom: {{keyboardHeight > 0 ? keyboardHeight + 'px' : 'calc(16rpx + env(safe-area-inset-bottom))'}}; transition: padding-bottom {{kbDuration}}ms ease;">
+    <!-- adjust-position 关闭，改用 keyboardheightchange：键盘动画一开始即拿到
+         目标高度与时长，输入栏等时长上移，与键盘完全同步 -->
+    <input class="ai-input" placeholder="食材替换、火候、保存方法…"
+      value="{{input}}" bindinput="onInput" confirm-type="send" bindconfirm="send"
+      adjust-position="{{false}}" bindkeyboardheightchange="onKeyboardChange" />
+    <view class="send-btn" bindtap="send">发送</view>
+  </view>
+</view>

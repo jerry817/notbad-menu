@@ -1,0 +1,48 @@
+<!--pages/category/category.wxml 分类页-->
+<view class="cat-page" bindtouchstart="onBodyTouchStart" bindtouchend="onBodyTouchEnd">
+
+  <!-- 一级分类 tab：吸顶固定。横滑条及每个标签都带 data-swipe-ignore，
+       在标签栏上拖动只滚动标签栏本身，只有点击标签才切换页面 -->
+  <view class="tab-bar" data-swipe-ignore="1">
+    <scroll-view class="tab-scroll" scroll-x enhanced show-scrollbar="{{false}}"
+      enable-flex scroll-with-animation scroll-into-view="{{'tab-' + activeKey}}"
+      data-swipe-ignore="1">
+      <view class="tab-item {{activeKey === item.key ? 'tab-active' : ''}}"
+        wx:for="{{categories}}" wx:key="key" id="tab-{{item.key}}"
+        bindtap="onSelectCategory" data-key="{{item.key}}" data-swipe-ignore="1">
+        {{item.name}}
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="cat-content">
+    <view wx:if="{{loading}}" class="cat-loading">
+      <view class="cat-loading-dot"></view>
+      <text>正在加载分类内容</text>
+    </view>
+    <!-- 中式菜肴：八大菜系入口 -->
+    <block wx:elif="{{activeKey === 'cn'}}">
+      <view class="cuisine-card" wx:for="{{cuisineCounts}}" wx:key="key" bindtap="goCuisine" data-key="{{item.key}}">
+        <view class="cuisine-badge">{{item.name}}</view>
+        <view class="col flex-1 cuisine-info">
+          <view class="cuisine-name">{{item.name}}</view>
+          <view class="cuisine-desc ellipsis">{{item.desc}} · {{item.count}} 道菜谱</view>
+        </view>
+        <text class="cuisine-arrow">›</text>
+      </view>
+    </block>
+
+    <!-- 其他分类：预览 + 查看全部 -->
+    <block wx:else>
+      <view class="preview-grid">
+        <view class="preview-item" wx:for="{{preview}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+          <image wx:if="{{item.coverImageUrl}}" class="cover preview-cover" src="{{item.coverImageUrl}}" mode="aspectFill" lazy-load="{{true}}" />
+          <view wx:else class="cover preview-cover"></view>
+          <view class="preview-title ellipsis">{{item.title}}</view>
+          <view class="preview-meta">{{item.difficulty}} · {{item.time}}分钟</view>
+        </view>
+      </view>
+      <view class="view-all-btn" bindtap="goCategoryList">查看全部 {{total}} 道菜谱</view>
+    </block>
+  </view>
+</view>

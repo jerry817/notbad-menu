@@ -1,0 +1,169 @@
+/* pages/category/category.wxss */
+/* 采用页面级滚动（与列表页一致），不再使用整屏 flex + 内嵌 scroll-view，
+   从根本上避免内容被顶部 tab 条和底部原生 tabBar 遮挡。 */
+page {
+  background: #f7f4f0;
+}
+
+/* 一级分类 tab：吸顶固定，不透明背景，内容滚动时从其下方经过 */
+.tab-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #fff;
+  border-bottom: 2rpx solid #f0ebe5;
+}
+
+.tab-scroll {
+  white-space: nowrap;
+}
+
+.tab-item {
+  display: inline-block;
+  padding: 28rpx 28rpx 20rpx;
+  font-size: 27rpx;
+  color: #888;
+}
+
+.tab-active {
+  color: #e8552f;
+  font-weight: 600;
+  position: relative;
+}
+
+.tab-active::after {
+  content: '';
+  position: absolute;
+  left: 28rpx;
+  right: 28rpx;
+  bottom: 0;
+  height: 5rpx;
+  background: #e8552f;
+  border-radius: 4rpx;
+}
+
+.cat-content {
+  padding: 24rpx;
+  /* 底部留出安全区，最后一张卡片不会贴住或被原生 tabBar 遮挡 */
+  padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+.cat-loading {
+  min-height: 360rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 24rpx;
+}
+
+.cat-loading-dot {
+  width: 48rpx;
+  height: 48rpx;
+  box-sizing: border-box;
+  border: 5rpx solid #f4d8cd;
+  border-top-color: #e8552f;
+  border-radius: 50%;
+  margin-bottom: 18rpx;
+  animation: category-spin 0.8s linear infinite;
+}
+
+@keyframes category-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 菜系卡片 */
+.cuisine-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 4rpx 16rpx rgba(80, 50, 20, 0.05);
+}
+
+.cuisine-badge {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 20rpx;
+  background: linear-gradient(135deg, #ff8a4c, #e8552f);
+  color: #fff;
+  font-size: 22rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+}
+
+.cuisine-info {
+  min-width: 0;
+}
+
+.cuisine-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.cuisine-desc {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 6rpx;
+}
+
+.cuisine-arrow {
+  font-size: 40rpx;
+  color: #ccc;
+  margin-left: 12rpx;
+}
+
+/* 其他分类：预览宫格 */
+.preview-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8rpx;
+}
+
+.preview-item {
+  width: calc(50% - 16rpx);
+  margin: 8rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(80, 50, 20, 0.05);
+}
+
+.preview-cover {
+  width: 100%;
+  height: 200rpx;
+  border-radius: 0;
+}
+
+.preview-title {
+  font-size: 26rpx;
+  font-weight: 600;
+  padding: 16rpx 16rpx 4rpx;
+}
+
+.preview-meta {
+  font-size: 20rpx;
+  color: #999;
+  padding: 0 16rpx 16rpx;
+}
+
+.view-all-btn {
+  text-align: center;
+  color: #e8552f;
+  font-size: 26rpx;
+  font-weight: 500;
+  background: #fff;
+  border-radius: 999rpx;
+  padding: 22rpx 0;
+  margin: 12rpx 0 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(80, 50, 20, 0.05);
+}

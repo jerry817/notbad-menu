@@ -1,0 +1,106 @@
+<!--pages/publish/publish.wxml 发布自创菜谱-->
+<view class="page-pad">
+
+  <!-- 封面图 -->
+  <view class="section-title">封面图（选填）</view>
+  <view class="card">
+    <view class="cover-picker" bindtap="chooseCover">
+      <image wx:if="{{coverPreviewUrl}}" class="cover-preview" src="{{coverPreviewUrl}}" mode="aspectFill" />
+      <view wx:else class="cover-placeholder">
+        <text class="cover-placeholder-icon">📷</text>
+        <text>点击上传封面图</text>
+      </view>
+      <view wx:if="{{coverUploading}}" class="cover-uploading-mask">上传中…</view>
+    </view>
+    <text wx:if="{{coverPreviewUrl && !coverUploading}}" class="cover-remove" bindtap="removeCover">移除封面图</text>
+  </view>
+
+  <!-- 基本信息 -->
+  <view class="section-title">基本信息</view>
+  <view class="card">
+    <view class="form-label">菜谱名称</view>
+    <input class="form-input" placeholder="例如：外婆牌辣椒炒肉"
+      value="{{form.title}}" bindinput="onField" data-field="title" />
+
+    <view class="form-label">一句话介绍</view>
+    <textarea class="form-textarea" placeholder="这道菜的故事、风味、适合什么场合…"
+      value="{{form.desc}}" bindinput="onField" data-field="desc" maxlength="100" />
+
+    <view class="form-label">所属分类</view>
+    <picker mode="selector" range="{{categories}}" range-key="name" value="{{catIndex}}" bindchange="onCat">
+      <view class="form-picker">{{categories[catIndex].icon}} {{categories[catIndex].name}} ▾</view>
+    </picker>
+
+    <block wx:if="{{categories[catIndex].key === 'cn'}}">
+      <view class="form-label">所属菜系</view>
+      <picker mode="selector" range="{{cuisines}}" range-key="name" value="{{cuisineIndex}}" bindchange="onCuisine">
+        <view class="form-picker">{{cuisines[cuisineIndex].name}} ▾</view>
+      </picker>
+    </block>
+
+    <view class="form-label">制作难度</view>
+    <view class="diff-row">
+      <text class="diff-chip {{diffIndex === index ? 'diff-active' : ''}}"
+        wx:for="{{difficulties}}" wx:key="*this"
+        bindtap="onDiff" data-index="{{index}}">{{item}}</text>
+    </view>
+
+    <view class="row time-row">
+      <view class="col flex-1">
+        <view class="form-label">耗时（分钟）</view>
+        <input class="form-input" type="number" placeholder="例如：30" value="{{form.time}}" bindinput="onTime" />
+      </view>
+      <view class="col flex-1" style="margin-left: 24rpx;">
+        <view class="form-label">份量</view>
+        <input class="form-input" placeholder="例如：2-3人" value="{{form.servings}}" bindinput="onServings" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 食材 -->
+  <view class="section-title">食材清单</view>
+  <view class="card">
+    <view class="ing-edit-row" wx:for="{{ingredients}}" wx:key="index">
+      <input class="ing-name-input" placeholder="食材名" value="{{item.name}}"
+        bindinput="onIng" data-index="{{index}}" data-field="name" />
+      <input class="ing-amount-input" placeholder="用量" value="{{item.amount}}"
+        bindinput="onIng" data-index="{{index}}" data-field="amount" />
+      <text class="row-remove" bindtap="removeIngredient" data-index="{{index}}">✕</text>
+    </view>
+    <view class="add-row" bindtap="addIngredient">＋ 添加食材</view>
+  </view>
+
+  <!-- 步骤 -->
+  <view class="section-title">制作步骤</view>
+  <view class="card">
+    <view class="step-edit-item" wx:for="{{steps}}" wx:key="index">
+      <view class="step-edit-num">{{index + 1}}</view>
+      <textarea class="step-edit-text" placeholder="描述这一步怎么做…"
+        value="{{item}}" bindinput="onStep" data-index="{{index}}" maxlength="300" auto-height />
+      <text class="row-remove" bindtap="removeStep" data-index="{{index}}">✕</text>
+    </view>
+    <view class="add-row" bindtap="addStep">＋ 添加步骤</view>
+  </view>
+
+  <!-- 小贴士 -->
+  <view class="section-title">小贴士（选填）</view>
+  <view class="card">
+    <view class="ing-edit-row" wx:for="{{tips}}" wx:key="index">
+      <input class="form-input" placeholder="例如：吃饱了就不会饿"
+        value="{{item}}" bindinput="onTip" data-index="{{index}}" />
+      <text class="row-remove" bindtap="removeTip" data-index="{{index}}">✕</text>
+    </view>
+    <view class="add-row" bindtap="addTip">＋ 添加小贴士</view>
+  </view>
+
+  <!-- 抖音视频链接 -->
+  <view class="section-title">抖音视频链接（选填）</view>
+  <view class="card">
+    <input class="form-input" placeholder="粘贴分享链接，方便大家跟着视频做"
+      value="{{form.douyinUrl}}" bindinput="onField" data-field="douyinUrl" />
+  </view>
+
+  <view class="submit-btn btn-primary" bindtap="submit">发布菜谱</view>
+  <view class="submit-tip">发布需先登录，之后可在「我的-我的菜谱」中管理</view>
+
+</view>

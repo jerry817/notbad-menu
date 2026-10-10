@@ -1,0 +1,92 @@
+/* pages/ai/ai.wxss */
+page {
+  height: 100%;
+  background: #f7f4f0;
+}
+
+.ai-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.msg-scroll {
+  flex: 1;
+  /* 输入栏随键盘加高时会挤压消息区；flex 子项默认 min-height:auto 会被
+     内容撑住、拒绝收缩，置 0 后消息区才能正确收缩、最新消息保持可见 */
+  min-height: 0;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.msg-row {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.msg-row-user {
+  justify-content: flex-end;
+}
+
+.msg-bubble {
+  max-width: 76%;
+  padding: 20rpx 24rpx;
+  border-radius: 20rpx;
+  font-size: 27rpx;
+  line-height: 1.6;
+}
+
+.bubble-ai {
+  background: #fff;
+  color: #444;
+  box-shadow: 0 4rpx 16rpx rgba(80, 50, 20, 0.05);
+}
+
+.bubble-user {
+  background: linear-gradient(135deg, #ff8a4c, #e8552f);
+  color: #fff;
+}
+
+.suggestion-scroll {
+  white-space: nowrap;
+  padding: 0 24rpx 16rpx;
+}
+
+.suggestion-chip {
+  display: inline-block;
+  background: #fff;
+  color: #e8552f;
+  font-size: 24rpx;
+  border-radius: 999rpx;
+  padding: 12rpx 26rpx;
+  margin-right: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(80, 50, 20, 0.05);
+}
+
+.input-bar {
+  display: flex;
+  align-items: center;
+  /* 底部内边距由内联样式控制：键盘弹起时等于键盘高度，收起时为安全区高度 */
+  padding: 16rpx 24rpx;
+  background: #fff;
+  border-top: 2rpx solid #f0ebe5;
+}
+
+.ai-input {
+  flex: 1;
+  background: #f7f4f0;
+  border-radius: 999rpx;
+  padding: 18rpx 28rpx;
+  font-size: 26rpx;
+}
+
+.send-btn {
+  background: linear-gradient(135deg, #ff8a4c, #e8552f);
+  color: #fff;
+  font-size: 26rpx;
+  border-radius: 999rpx;
+  padding: 18rpx 36rpx;
+  margin-left: 16rpx;
+  flex-shrink: 0;
+}

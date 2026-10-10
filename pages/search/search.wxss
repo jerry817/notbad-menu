@@ -1,0 +1,81 @@
+/* pages/search/search.wxss */
+.search-box {
+  background: #fff;
+  border-radius: 999rpx;
+  display: flex;
+  align-items: center;
+  padding: 18rpx 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(80, 50, 20, 0.05);
+}
+
+.search-input {
+  flex: 1;
+  margin: 0 20rpx;
+  font-size: 28rpx;
+}
+
+.clear-btn {
+  color: #ccc;
+  font-size: 28rpx;
+  padding: 0 8rpx;
+}
+
+.result-count {
+  font-size: 22rpx;
+  color: #aaa;
+  margin: 24rpx 8rpx;
+}
+
+.chip-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chip {
+  background: #fff;
+  color: #666;
+  font-size: 24rpx;
+  border-radius: 999rpx;
+  padding: 10rpx 28rpx;
+  margin: 0 16rpx 16rpx 0;
+  box-shadow: 0 4rpx 12rpx rgba(80, 50, 20, 0.05);
+}
+
+.clear-history {
+  font-size: 22rpx;
+  color: #bbb;
+  font-weight: 400;
+}
+
+.list-card {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.list-cover {
+  width: 150rpx;
+  height: 150rpx;
+  flex-shrink: 0;
+}
+
+.list-info {
+  margin-left: 24rpx;
+}
+
+.list-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.list-desc {
+  font-size: 22rpx;
+  color: #999;
+  margin: 8rpx 0 12rpx;
+  line-height: 1.5;
+}
+
+.list-meta-text {
+  font-size: 22rpx;
+  color: #999;
+  margin-right: 16rpx;
+}

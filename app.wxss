@@ -1,0 +1,221 @@
+/**app.wxss 全局样式 —— 暖色家庭美食主题**/
+page {
+  background: #f7f4f0;
+  color: #333;
+  font-size: 28rpx;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+/* ---------- 通用布局 ---------- */
+.page-pad {
+  padding: 24rpx;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.flex-1 {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---------- 卡片 ---------- */
+.card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(80, 50, 20, 0.05);
+}
+
+/* ---------- 封面（实拍图，用纯色作为图片加载前的占位底色） ---------- */
+.cover {
+  position: relative;
+  border-radius: 20rpx;
+  overflow: hidden;
+  background: #f0ebe5;
+}
+
+.cover-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---------- 标签 ---------- */
+.tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: 999rpx;
+  font-size: 20rpx;
+  margin-right: 12rpx;
+}
+
+.tag-hot {
+  background: #ffece5;
+  color: #e8552f;
+}
+
+/* ---------- 章节标题 ---------- */
+.section-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  margin: 32rpx 0 20rpx;
+}
+
+.section-title .sub {
+  font-size: 22rpx;
+  color: #aaa;
+  font-weight: 400;
+  margin-left: 12rpx;
+}
+
+/* ---------- 按钮 ---------- */
+.btn-primary {
+  background: linear-gradient(135deg, #ff8a4c, #e8552f);
+  color: #fff;
+  border-radius: 999rpx;
+  text-align: center;
+  padding: 22rpx 0;
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.btn-primary.disabled {
+  opacity: 0.5;
+}
+
+.btn-ghost {
+  border: 2rpx solid #e8552f;
+  color: #e8552f;
+  border-radius: 999rpx;
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 30rpx;
+  background: #fff;
+}
+
+/* ---------- 空状态 ---------- */
+.empty {
+  text-align: center;
+  color: #bbb;
+  font-size: 26rpx;
+  padding: 120rpx 0;
+}
+
+.empty .empty-emoji {
+  font-size: 90rpx;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+/* ---------- 单行省略 ---------- */
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ellipsis-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* ---------- 菜谱列表行（收藏夹 / 浏览历史等横向卡片共用） ---------- */
+.recipe-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.recipe-row-cover {
+  width: 160rpx;
+  height: 160rpx;
+  flex-shrink: 0;
+}
+
+.recipe-row-info {
+  margin-left: 24rpx;
+}
+
+.recipe-row-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.recipe-row-desc {
+  font-size: 22rpx;
+  color: #999;
+  margin: 8rpx 0 12rpx;
+  line-height: 1.5;
+}
+
+.recipe-row-meta-text {
+  font-size: 22rpx;
+  color: #999;
+  margin-right: 16rpx;
+}
+
+.recipe-row-remove {
+  font-size: 36rpx;
+  padding: 12rpx 8rpx 12rpx 20rpx;
+}
+
+/* 小号弱化操作文字（“清空”等），收藏夹/浏览历史/我的页共用 */
+.muted-action {
+  font-size: 22rpx;
+  color: #bbb;
+  font-weight: 400;
+}
+
+/* ---------- 内联加载态：搜索中、列表翻页中等场景共用 ---------- */
+.loading-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+  color: #aaa;
+  font-size: 24rpx;
+}
+
+/* 紧凑横排变体：用在列表底部“加载更多”这种不需要占满整屏的场景 */
+.loading-inline-compact {
+  flex-direction: row;
+  padding: 32rpx 0;
+}
+
+.loading-inline-compact .loading-dot {
+  margin-bottom: 0;
+  margin-right: 16rpx;
+}
+
+.loading-dot {
+  width: 48rpx;
+  height: 48rpx;
+  box-sizing: border-box;
+  border: 5rpx solid #f4d8cd;
+  border-top-color: #e8552f;
+  border-radius: 50%;
+  margin-bottom: 18rpx;
+  animation: loading-spin 0.8s linear infinite;
+}
+
+@keyframes loading-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

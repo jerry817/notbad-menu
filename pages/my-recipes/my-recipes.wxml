@@ -1,0 +1,26 @@
+<!--pages/my-recipes/my-recipes.wxml 我的菜谱-->
+<view class="page-pad">
+
+  <view wx:if="{{loading}}" class="loading-inline">
+    <view class="loading-dot"></view>
+    <text>加载中…</text>
+  </view>
+
+  <block wx:else>
+    <view class="card my-card" wx:for="{{list}}" wx:key="id">
+      <image wx:if="{{item.coverImageUrl}}" class="cover my-cover" src="{{item.coverImageUrl}}" mode="aspectFill" lazy-load="{{true}}" bindtap="goDetail" data-id="{{item.id}}" />
+      <view wx:else class="cover my-cover" bindtap="goDetail" data-id="{{item.id}}"></view>
+      <view class="col flex-1 my-info" bindtap="goDetail" data-id="{{item.id}}">
+        <view class="my-title ellipsis">{{item.title}}</view>
+        <view class="my-sub">{{item.time}}分钟 · {{item.difficulty}}</view>
+      </view>
+      <text class="my-remove" catchtap="removeMine" data-id="{{item.id}}">删除</text>
+    </view>
+
+    <view wx:if="{{!list.length}}" class="empty">
+      <text class="empty-emoji">🍳</text>
+      还没有自创菜谱，去「发布」晒出你的拿手菜吧
+    </view>
+  </block>
+
+</view>

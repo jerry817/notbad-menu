@@ -1,0 +1,203 @@
+/* pages/publish/publish.wxss */
+/* 封面图 */
+.cover-picker {
+  position: relative;
+  width: 100%;
+  height: 320rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  background: #f7f4f0;
+}
+
+.cover-preview {
+  width: 100%;
+  height: 100%;
+}
+
+.cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx dashed #ffd0be;
+  border-radius: 16rpx;
+  box-sizing: border-box;
+  color: #c9a98f;
+  font-size: 24rpx;
+}
+
+.cover-placeholder-icon {
+  font-size: 48rpx;
+  margin-bottom: 8rpx;
+}
+
+.cover-uploading-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 26rpx;
+}
+
+.cover-remove {
+  display: block;
+  text-align: center;
+  font-size: 24rpx;
+  color: #bbb;
+  margin-top: 16rpx;
+}
+
+.form-label {
+  font-size: 26rpx;
+  color: #888;
+  margin: 28rpx 0 12rpx;
+}
+
+.form-label:first-child {
+  margin-top: 0;
+}
+
+.form-input {
+  background: #f7f4f0;
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+}
+
+.form-textarea {
+  background: #f7f4f0;
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
+  font-size: 26rpx;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 120rpx;
+}
+
+.form-picker {
+  background: #f7f4f0;
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+  color: #444;
+}
+
+/* 难度 */
+.diff-row {
+  display: flex;
+}
+
+.diff-chip {
+  background: #f5f2ed;
+  color: #666;
+  font-size: 26rpx;
+  border-radius: 999rpx;
+  padding: 10rpx 32rpx;
+  margin-right: 20rpx;
+}
+
+.diff-active {
+  background: #ffece5;
+  color: #e8552f;
+  font-weight: 600;
+}
+
+.time-row {
+  align-items: flex-start;
+}
+
+/* 食材编辑 */
+.ing-edit-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.ing-name-input {
+  flex: 1;
+  background: #f7f4f0;
+  border-radius: 16rpx;
+  padding: 18rpx 24rpx;
+  font-size: 26rpx;
+}
+
+.ing-amount-input {
+  width: 180rpx;
+  background: #f7f4f0;
+  border-radius: 16rpx;
+  padding: 18rpx 24rpx;
+  font-size: 26rpx;
+  margin: 0 16rpx;
+}
+
+.row-remove {
+  color: #ccc;
+  font-size: 30rpx;
+  padding: 8rpx 4rpx 8rpx 12rpx;
+}
+
+.add-row {
+  text-align: center;
+  color: #e8552f;
+  font-size: 26rpx;
+  padding: 16rpx;
+  border: 2rpx dashed #ffd0be;
+  border-radius: 16rpx;
+  margin-top: 8rpx;
+}
+
+/* 步骤编辑 */
+.step-edit-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20rpx;
+}
+
+.step-edit-num {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  background: #ffece5;
+  color: #e8552f;
+  font-size: 24rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 16rpx;
+  margin-top: 12rpx;
+}
+
+.step-edit-text {
+  flex: 1;
+  background: #f7f4f0;
+  border-radius: 16rpx;
+  padding: 18rpx 24rpx;
+  font-size: 26rpx;
+  width: auto;
+}
+
+.step-edit-item .row-remove {
+  margin-top: 12rpx;
+}
+
+/* 提交 */
+.submit-btn {
+  margin-top: 48rpx;
+}
+
+.submit-tip {
+  text-align: center;
+  font-size: 22rpx;
+  color: #bbb;
+  margin: 24rpx 0 40rpx;
+}

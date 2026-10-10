@@ -1,0 +1,50 @@
+/* pages/changelog/changelog.wxss */
+.about-card {
+  background: linear-gradient(135deg, #ff8a4c, #e8552f);
+  border-radius: 28rpx;
+  padding: 40rpx 32rpx;
+  color: #fff;
+  text-align: center;
+}
+
+.app-name {
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.app-slogan {
+  font-size: 24rpx;
+  opacity: 0.9;
+  margin-top: 10rpx;
+}
+
+.app-version {
+  font-size: 22rpx;
+  opacity: 0.8;
+  margin-top: 16rpx;
+}
+
+.log-item {
+  margin-bottom: 20rpx;
+}
+
+.log-head {
+  margin-bottom: 12rpx;
+}
+
+.log-version {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #e8552f;
+}
+
+.log-date {
+  font-size: 22rpx;
+  color: #bbb;
+}
+
+.log-note {
+  font-size: 25rpx;
+  color: #666;
+  line-height: 1.8;
+}

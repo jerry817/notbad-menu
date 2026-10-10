@@ -1,0 +1,9 @@
+{
+  "name": "resolveImage",
+  "version": "1.0.0",
+  "description": "以管理端权限换取云存储临时地址，绕开客户端的云存储读权限限制",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

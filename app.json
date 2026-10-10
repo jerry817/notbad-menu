@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/category/category",
+    "pages/list/list",
+    "pages/detail/detail",
+    "pages/search/search",
+    "pages/publish/publish",
+    "pages/mine/mine",
+    "pages/favorites/favorites",
+    "pages/my-recipes/my-recipes",
+    "pages/chat-list/chat-list",
+    "pages/login/login",
+    "pages/ai/ai",
+    "pages/changelog/changelog"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "家味",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7f4f0",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#e8552f",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "首页", "iconPath": "assets/tabbar/home.png", "selectedIconPath": "assets/tabbar/home-active.png" },
+      { "pagePath": "pages/category/category", "text": "分类", "iconPath": "assets/tabbar/category.png", "selectedIconPath": "assets/tabbar/category-active.png" },
+      { "pagePath": "pages/publish/publish", "text": "发布", "iconPath": "assets/tabbar/publish.png", "selectedIconPath": "assets/tabbar/publish-active.png" },
+      { "pagePath": "pages/mine/mine", "text": "我的", "iconPath": "assets/tabbar/mine.png", "selectedIconPath": "assets/tabbar/mine-active.png" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

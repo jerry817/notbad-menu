@@ -1,0 +1,29 @@
+/* pages/chat-list/chat-list.wxss */
+
+.chat-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.chat-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-preview {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.chat-meta {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.chat-remove {
+  color: #e8552f;
+  font-size: 24rpx;
+  padding: 12rpx 20rpx;
+}

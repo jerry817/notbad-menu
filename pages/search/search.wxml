@@ -1,0 +1,56 @@
+<!--pages/search/search.wxml 搜索页-->
+<view class="page-pad">
+
+  <!-- 搜索框 -->
+  <view class="search-box">
+    <text>🔍</text>
+    <input class="search-input" placeholder="搜菜名 / 食材 / 标签"
+      value="{{keyword}}" focus bindinput="onInput" bindconfirm="onConfirm"
+      confirm-type="search" />
+    <text wx:if="{{keyword}}" class="clear-btn" bindtap="onClear">✕</text>
+  </view>
+
+  <!-- 搜索中 -->
+  <view wx:if="{{loading}}" class="loading-inline">
+    <view class="loading-dot"></view>
+    <text>搜索中…</text>
+  </view>
+
+  <!-- 搜索结果 -->
+  <block wx:elif="{{searching}}">
+    <view class="result-count" wx:if="{{results.length}}">找到 {{results.length}} 个结果</view>
+    <view class="card list-card" wx:for="{{results}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+      <image wx:if="{{item.coverImageUrl}}" class="cover list-cover" src="{{item.coverImageUrl}}" mode="aspectFill" />
+      <view wx:else class="cover list-cover"></view>
+      <view class="col flex-1 list-info">
+        <view class="list-title ellipsis">{{item.title}}</view>
+        <view class="list-desc ellipsis-2">{{item.desc}}</view>
+        <view class="row">
+          <text class="tag tag-hot">{{item.difficulty}}</text>
+          <text class="list-meta-text">{{item.time}}分钟</text>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{!results.length}}" class="empty">
+      <text class="empty-emoji">🔎</text>
+      没找到「{{keyword}}」相关的菜谱，换个关键词试试
+    </view>
+  </block>
+
+  <!-- 搜索前：历史 + 热门 -->
+  <block wx:else>
+    <view wx:if="{{history.length}}" class="section-title row between">
+      <text>搜索历史</text>
+      <text class="clear-history" bindtap="clearHistory">清空</text>
+    </view>
+    <view wx:if="{{history.length}}" class="chip-wrap">
+      <text class="chip" wx:for="{{history}}" wx:key="*this" bindtap="onPick" data-word="{{item}}">{{item}}</text>
+    </view>
+
+    <view class="section-title">热门搜索</view>
+    <view class="chip-wrap">
+      <text class="chip" wx:for="{{hotWords}}" wx:key="*this" bindtap="onPick" data-word="{{item}}">{{item}}</text>
+    </view>
+  </block>
+
+</view>

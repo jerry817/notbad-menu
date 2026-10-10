@@ -1,0 +1,36 @@
+/* pages/my-recipes/my-recipes.wxss */
+/* 列表行样式复用 mine 页面的 .my-card 系列类，这里只补充空状态微调 */
+
+.my-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.my-cover {
+  width: 130rpx;
+  height: 130rpx;
+  flex-shrink: 0;
+  border-radius: 20rpx;
+}
+
+.my-info {
+  margin-left: 24rpx;
+}
+
+.my-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.my-sub {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.my-remove {
+  color: #e8552f;
+  font-size: 24rpx;
+  padding: 12rpx 20rpx;
+}

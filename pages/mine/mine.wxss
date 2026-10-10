@@ -1,0 +1,203 @@
+/* pages/mine/mine.wxss */
+
+/* 用户卡片 */
+.user-card {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #ff8a4c, #e8552f);
+  border-radius: 28rpx;
+  padding: 40rpx 32rpx;
+  color: #fff;
+}
+
+.user-card-guest {
+  opacity: 0.96;
+}
+
+.user-avatar {
+  font-size: 90rpx;
+  margin-right: 28rpx;
+}
+
+.user-avatar-img {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  margin-right: 28rpx;
+  flex-shrink: 0;
+}
+
+.user-name {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.user-sub {
+  font-size: 24rpx;
+  opacity: 0.85;
+  margin-top: 8rpx;
+}
+
+.logout-btn {
+  font-size: 24rpx;
+  opacity: 0.9;
+  padding: 8rpx 16rpx;
+}
+
+.login-arrow {
+  font-size: 44rpx;
+  opacity: 0.85;
+}
+
+/* 统计面板 */
+.stat-card {
+  margin-top: 24rpx;
+  padding: 32rpx 12rpx;
+}
+
+.stat-panel {
+  display: flex;
+  align-items: center;
+  padding: 0 12rpx;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #e8552f;
+}
+
+/* 统计数字还没返回时，用同样尺寸的小圈圈占位，避免布局跳动 */
+.stat-loading-dot {
+  width: 32rpx;
+  height: 32rpx;
+  margin: 4rpx auto 0;
+}
+
+.stat-label {
+  font-size: 22rpx;
+  color: #aaa;
+  margin-top: 6rpx;
+}
+
+.stat-divider {
+  width: 2rpx;
+  height: 56rpx;
+  background: #f0ebe5;
+}
+
+/* 功能入口 */
+.func-list {
+  margin-top: 20rpx;
+  padding: 8rpx 24rpx;
+}
+
+.func-row {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 2rpx solid #f5f2ed;
+}
+
+.func-row:last-child {
+  border-bottom: none;
+}
+
+.func-icon {
+  font-size: 32rpx;
+  margin-right: 20rpx;
+}
+
+.func-label {
+  font-size: 27rpx;
+  color: #444;
+}
+
+.func-arrow {
+  font-size: 32rpx;
+  color: #ccc;
+}
+
+/* 我的菜谱 */
+.my-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.my-cover {
+  width: 130rpx;
+  height: 130rpx;
+  flex-shrink: 0;
+  border-radius: 20rpx;
+}
+
+.my-info {
+  margin-left: 24rpx;
+}
+
+.my-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.my-sub {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.my-remove {
+  color: #e8552f;
+  font-size: 24rpx;
+  padding: 12rpx 20rpx;
+}
+
+/* 浏览历史 */
+
+.hist-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8rpx;
+}
+
+.hist-item {
+  width: calc(25% - 16rpx);
+  margin: 8rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hist-cover {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 24rpx;
+}
+
+.hist-name {
+  font-size: 22rpx;
+  color: #666;
+  margin-top: 10rpx;
+  width: 100%;
+  text-align: center;
+}
+
+.empty-lite {
+  text-align: center;
+  color: #bbb;
+  font-size: 24rpx;
+}
+
+/* 页脚 */
+.footer {
+  text-align: center;
+  color: #ccc;
+  font-size: 22rpx;
+  margin: 48rpx 0 24rpx;
+}

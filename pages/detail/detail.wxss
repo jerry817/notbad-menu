@@ -1,0 +1,324 @@
+/* pages/detail/detail.wxss */
+
+/* 首屏加载态：撑满大部分屏幕高度，避免只出现一个小圈圈显得页面空荡 */
+.detail-loading {
+  min-height: 75vh;
+}
+
+/* 封面头部 */
+.hero {
+  height: 480rpx;
+  position: relative;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #e9e1d9;
+}
+
+.hero-fav {
+  position: absolute;
+  right: 24rpx;
+  top: 24rpx;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 999rpx;
+  padding: 12rpx 28rpx;
+  font-size: 24rpx;
+  color: #666;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.fav-active {
+  color: #e8552f;
+  font-weight: 600;
+}
+
+/* 标题区 */
+.title-block {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 28rpx;
+  box-shadow: 0 4rpx 16rpx rgba(80, 50, 20, 0.05);
+  margin-top: -40rpx;
+  position: relative;
+}
+
+.recipe-title {
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.recipe-desc {
+  font-size: 26rpx;
+  color: #888;
+  margin: 14rpx 0 18rpx;
+  line-height: 1.6;
+}
+
+.recipe-tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 数据面板 */
+.meta-panel {
+  display: flex;
+  align-items: center;
+  margin-top: 24rpx;
+  padding: 28rpx 12rpx;
+}
+
+.meta-item {
+  flex: 1;
+  text-align: center;
+}
+
+.meta-value {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #e8552f;
+}
+
+.meta-label {
+  font-size: 20rpx;
+  color: #aaa;
+  margin-top: 6rpx;
+}
+
+.meta-divider {
+  width: 2rpx;
+  height: 48rpx;
+  background: #f0ebe5;
+}
+
+/* 食材 */
+.ing-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 16rpx 8rpx;
+  border-bottom: 2rpx dashed #f0ebe5;
+  font-size: 27rpx;
+}
+
+.ing-row:last-child {
+  border-bottom: none;
+}
+
+.ing-name {
+  color: #444;
+}
+
+.ing-amount {
+  color: #999;
+}
+
+/* 步骤（图文对照） */
+.step-card {
+  background: #fff;
+  border-radius: 24rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(80, 50, 20, 0.05);
+}
+
+.step-head {
+  display: flex;
+  align-items: flex-start;
+  padding: 24rpx;
+}
+
+.step-num {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: #ffece5;
+  color: #e8552f;
+  font-size: 28rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+}
+
+.step-done {
+  background: #e8552f;
+  color: #fff;
+}
+
+.step-text {
+  flex: 1;
+  font-size: 27rpx;
+  line-height: 1.7;
+  color: #444;
+  padding-top: 4rpx;
+}
+
+.step-text-done {
+  color: #bbb;
+  text-decoration: line-through;
+}
+
+.step-img {
+  width: 100%;
+  height: 375rpx;
+  display: block;
+}
+
+/* 抖音视频卡片 */
+.video-card {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+}
+
+.video-icon {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  background: #ff2c55;
+  color: #fff;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+}
+
+.video-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.video-title {
+  font-size: 27rpx;
+  color: #333;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.video-tip {
+  font-size: 22rpx;
+  color: #aaa;
+  margin-top: 8rpx;
+}
+
+.video-copy {
+  flex-shrink: 0;
+  background: #ff2c55;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 999rpx;
+  padding: 10rpx 28rpx;
+  margin-left: 16rpx;
+}
+
+/* 贴士 */
+.tips-card {
+  background: #fffbe8;
+  margin-bottom: 20rpx;
+}
+
+.tip-row {
+  display: flex;
+  margin-bottom: 12rpx;
+}
+
+.tip-row:last-child {
+  margin-bottom: 0;
+}
+
+.tip-dot {
+  color: #e8a04c;
+  margin-right: 12rpx;
+  font-weight: 700;
+}
+
+.tip-text {
+  font-size: 25rpx;
+  color: #8a6d3b;
+  line-height: 1.6;
+}
+
+/* 作者 */
+.author-card {
+  display: flex;
+  align-items: center;
+}
+
+.author-name {
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.author-sub {
+  font-size: 22rpx;
+  color: #aaa;
+  margin-top: 4rpx;
+}
+
+.share-btn {
+  background: #ffece5;
+  color: #e8552f;
+  font-size: 24rpx;
+  border-radius: 999rpx;
+  padding: 0 36rpx;
+  line-height: 64rpx;
+  margin: 0;
+}
+
+/* 评论区 */
+.comment-input {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx;
+}
+
+.comment-field {
+  flex: 1;
+  font-size: 26rpx;
+}
+
+.comment-send {
+  background: linear-gradient(135deg, #ff8a4c, #e8552f);
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 999rpx;
+  padding: 10rpx 32rpx;
+  margin-left: 20rpx;
+}
+
+.comment-item {
+  display: flex;
+  margin-top: 20rpx;
+}
+
+.comment-author {
+  font-size: 22rpx;
+  color: #aaa;
+}
+
+.comment-delete {
+  font-size: 22rpx;
+  color: #c9853f;
+  padding: 4rpx 0 4rpx 20rpx;
+}
+
+.comment-content {
+  font-size: 26rpx;
+  line-height: 1.6;
+  margin-top: 6rpx;
+  color: #444;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}

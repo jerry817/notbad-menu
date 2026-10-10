@@ -1,0 +1,24 @@
+<!--pages/chat-list/chat-list.wxml 聊天记录-->
+<view class="page-pad">
+
+  <view wx:if="{{loading}}" class="loading-inline">
+    <view class="loading-dot"></view>
+    <text>加载中…</text>
+  </view>
+
+  <block wx:else>
+    <view class="card chat-row" wx:for="{{list}}" wx:key="_id" bindtap="openChat" data-id="{{item._id}}">
+      <view class="col flex-1 chat-info">
+        <view class="chat-preview ellipsis">{{item.preview}}</view>
+        <view class="chat-meta">{{item.updatedAtText}} · 共{{item.count}}条消息</view>
+      </view>
+      <text class="chat-remove" catchtap="removeChat" data-id="{{item._id}}">删除</text>
+    </view>
+
+    <view wx:if="{{!list.length}}" class="empty">
+      <text class="empty-emoji">💬</text>
+      还没有和吃货顾问聊过天
+    </view>
+  </block>
+
+</view>

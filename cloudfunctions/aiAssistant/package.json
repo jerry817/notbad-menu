@@ -1,0 +1,9 @@
+{
+  "name": "aiAssistant",
+  "version": "1.0.0",
+  "description": "美食顾问：安全代理外部大模型 API 调用",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

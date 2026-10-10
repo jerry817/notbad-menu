@@ -1,0 +1,89 @@
+/* pages/list/list.wxss */
+.cuisine-scroll {
+  white-space: nowrap;
+  margin-bottom: 16rpx;
+}
+
+.cuisine-chip {
+  display: inline-block;
+  background: #fff;
+  color: #666;
+  font-size: 24rpx;
+  border-radius: 999rpx;
+  padding: 10rpx 26rpx;
+  margin-right: 14rpx;
+  box-shadow: 0 4rpx 12rpx rgba(80, 50, 20, 0.05);
+}
+
+.filter-bar {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(80, 50, 20, 0.05);
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  padding: 8rpx 0;
+}
+
+.filter-label {
+  font-size: 24rpx;
+  color: #999;
+  width: 90rpx;
+}
+
+.filter-chip {
+  font-size: 24rpx;
+  color: #666;
+  background: #f5f2ed;
+  border-radius: 999rpx;
+  padding: 8rpx 24rpx;
+  margin-right: 16rpx;
+}
+
+.chip-active {
+  background: #ffece5;
+  color: #e8552f;
+  font-weight: 600;
+}
+
+.result-count {
+  font-size: 22rpx;
+  color: #aaa;
+  margin: 20rpx 8rpx;
+}
+
+.list-card {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.list-cover {
+  width: 170rpx;
+  height: 170rpx;
+  flex-shrink: 0;
+}
+
+.list-info {
+  margin-left: 24rpx;
+}
+
+.list-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.list-desc {
+  font-size: 22rpx;
+  color: #999;
+  margin: 8rpx 0 12rpx;
+  line-height: 1.5;
+}
+
+.list-meta-text {
+  font-size: 22rpx;
+  color: #999;
+  margin-right: 16rpx;
+}

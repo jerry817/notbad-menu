@@ -1,0 +1,39 @@
+<!--pages/login/login.wxml 登录-->
+<view class="login-page">
+  <view class="login-orb login-orb-one"></view>
+  <view class="login-orb login-orb-two"></view>
+
+  <view class="login-hero">
+    <view class="brand-mark">Hi</view>
+    <view class="brand-kicker">NOT BAD · HOME COOKING</view>
+    <view class="login-title">把热爱，端上餐桌</view>
+    <view class="login-subtitle">记录每一顿值得回味的好味道</view>
+  </view>
+
+  <view class="login-card">
+    <view class="avatar-row">
+      <view class="avatar-content">
+        <button class="avatar-btn" hover-class="none" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+          <view class="avatar-control">
+            <image wx:if="{{avatarUrl}}" class="avatar-img" src="{{avatarUrl}}" />
+            <text wx:else class="avatar-placeholder">＋</text>
+          </view>
+        </button>
+        <view class="avatar-text">
+          <view class="avatar-title">选择你的头像</view>
+          <view class="login-hint">让厨友更容易认出你</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="input-wrap">
+      <text class="input-mark">✦</text>
+      <input class="form-input" placeholder-class="input-placeholder-style" type="nickname" placeholder="给自己取个好听的昵称"
+        value="{{nickname}}" bindinput="onNicknameInput" />
+    </view>
+  </view>
+
+  <view class="login-btn btn-primary" bindtap="login">{{loading ? '登录中…' : '微信一键登录'}}</view>
+  <view class="login-note">登录即表示你同意以更好的方式分享与发现美食</view>
+
+</view>

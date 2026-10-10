@@ -1,0 +1,80 @@
+<!--pages/index/index.wxml 首页-->
+<view class="page-pad">
+
+  <!-- 搜索框入口 -->
+  <view class="search-bar" bindtap="goSearch">
+    <text class="search-icon">🔍</text>
+    <text class="search-placeholder">搜菜名 / 食材，例如「红烧肉」「土豆」</text>
+  </view>
+
+  <!-- Banner 轮播（实拍图风格） -->
+  <swiper wx:if="{{banners.length}}" class="banner" indicator-dots indicator-color="rgba(255,255,255,.4)"
+    indicator-active-color="#fff" autoplay interval="4000" circular>
+    <swiper-item wx:for="{{banners}}" wx:key="_id" bindtap="goList" data-key="{{item.page}}">
+      <view class="banner-item">
+        <image wx:if="{{item.imageUrl}}" class="banner-img" src="{{item.imageUrl}}" mode="aspectFill" />
+        <view wx:else class="banner-img"></view>
+        <view class="banner-mask"></view>
+        <view class="banner-title">{{item.title}}</view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <view wx:else class="banner banner-empty">
+    <view class="banner-title">加载中...</view>
+  </view>
+
+  <!-- 分类入口 -->
+  <view class="section-title">全部分类 <text class="sub">{{totalCount}} 道菜谱</text></view>
+  <view class="cat-grid">
+    <view class="cat-item" wx:for="{{categories}}" wx:key="key" bindtap="goList" data-key="{{item.key}}" style="background:{{item.bg}}">
+      <view class="cat-icon" style="color:{{item.color}}">{{item.icon}}</view>
+      <view class="cat-name">{{item.name}}</view>
+      <text class="cat-arrow" style="color:{{item.color}}">›</text>
+    </view>
+    <view class="cat-item cat-item-ai" bindtap="goAI">
+      <view class="cat-icon cat-icon-ai">✨</view>
+      <view class="cat-name">吃货顾问</view>
+      <text class="cat-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 今日推荐 -->
+  <view class="section-title">今日推荐</view>
+  <view class="card today-card" wx:if="{{today}}" bindtap="goDetail" data-id="{{today.id}}">
+    <image wx:if="{{today.coverImageUrl}}" class="cover today-cover" src="{{today.coverImageUrl}}" mode="aspectFill" />
+    <view wx:else class="cover today-cover"></view>
+    <view class="col flex-1 today-info">
+      <view class="today-title">{{today.title}}</view>
+      <view class="today-desc ellipsis-2">{{today.desc}}</view>
+      <view class="row today-meta">
+        <text class="tag tag-hot">{{today.difficulty}}</text>
+        <text class="meta-text">{{today.time}} 分钟</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 热门菜谱榜 -->
+  <view class="section-title">热门菜谱</view>
+  <view class="card hot-card" wx:for="{{hotList}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+    <view class="hot-cover-wrap">
+      <image wx:if="{{item.coverImageUrl}}" class="cover hot-cover" src="{{item.coverImageUrl}}" mode="aspectFill" lazy-load="{{true}}" />
+      <view wx:else class="cover hot-cover"></view>
+      <view class="rank {{index < 3 ? 'rank-top' : 'rank-normal'}}">{{index + 1}}</view>
+    </view>
+    <view class="col flex-1 hot-info">
+      <view class="hot-title ellipsis">{{item.title}}</view>
+      <view class="hot-desc ellipsis">{{item.desc}}</view>
+      <view class="row hot-meta">
+        <text class="tag tag-hot">{{item.difficulty}}</text>
+        <text class="meta-text">{{item.time}} 分钟</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 发布引导 -->
+  <view class="publish-cta" bindtap="goPublish">
+    <text>做出了拿手好菜？</text>
+    <text class="publish-cta-btn">去发布我的菜谱</text>
+  </view>
+
+</view>

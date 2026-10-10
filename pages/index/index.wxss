@@ -1,0 +1,230 @@
+/* pages/index/index.wxss */
+
+/* 搜索入口 */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 999rpx;
+  padding: 20rpx 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(80, 50, 20, 0.05);
+}
+
+.search-icon {
+  font-size: 32rpx;
+  margin-right: 16rpx;
+}
+
+.search-placeholder {
+  color: #bbb;
+  font-size: 26rpx;
+}
+
+/* Banner */
+.banner {
+  margin-top: 24rpx;
+  border-radius: 24rpx;
+  overflow: hidden;
+  height: 280rpx;
+}
+
+.banner-item {
+  position: relative;
+  height: 280rpx;
+}
+
+.banner-empty {
+  position: relative;
+  background: #e9e1d9;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #e9e1d9;
+}
+
+.banner-mask {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+}
+
+.banner-title {
+  position: absolute;
+  left: 32rpx;
+  bottom: 28rpx;
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: 600;
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.25);
+}
+
+/* 分类宫格 */
+.cat-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -6rpx;
+}
+
+.cat-item {
+  width: calc(50% - 12rpx);
+  margin: 6rpx;
+  border-radius: 18rpx;
+  padding: 18rpx 20rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.cat-icon {
+  width: 52rpx;
+  height: 52rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.58);
+  font-size: 30rpx;
+  margin-right: 14rpx;
+}
+
+.cat-icon-ai {
+  color: #8c5bd1;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.cat-name {
+  font-size: 25rpx;
+  font-weight: 500;
+  color: #444;
+}
+
+.cat-arrow {
+  margin-left: auto;
+  font-size: 32rpx;
+  line-height: 1;
+  opacity: 0.62;
+}
+
+.cat-item-ai {
+  background: #f0eaff;
+}
+
+/* 今日推荐 */
+.today-card {
+  display: flex;
+}
+
+.today-cover {
+  width: 220rpx;
+  height: 220rpx;
+  flex-shrink: 0;
+}
+
+.today-info {
+  margin-left: 24rpx;
+}
+
+.today-title {
+  font-size: 34rpx;
+  font-weight: 600;
+}
+
+.today-desc {
+  font-size: 24rpx;
+  color: #999;
+  margin: 12rpx 0 16rpx;
+  line-height: 1.5;
+}
+
+.today-meta {
+  margin-top: auto;
+}
+
+.meta-text {
+  font-size: 22rpx;
+  color: #999;
+  margin-right: 20rpx;
+}
+
+/* 热门榜 */
+.hot-card {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.hot-cover-wrap {
+  position: relative;
+  width: 160rpx;
+  height: 160rpx;
+  flex-shrink: 0;
+}
+
+.hot-cover {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.rank {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx 0 20rpx 0;
+  color: #fff;
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.rank-top {
+  background: #e8552f;
+}
+
+.rank-normal {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.hot-info {
+  margin-left: 24rpx;
+}
+
+.hot-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.hot-desc {
+  font-size: 22rpx;
+  color: #999;
+  margin: 8rpx 0 12rpx;
+}
+
+.hot-meta {
+  margin-top: auto;
+}
+
+/* 发布引导 */
+.publish-cta {
+  margin: 40rpx 0 20rpx;
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #666;
+  box-shadow: 0 4rpx 16rpx rgba(80, 50, 20, 0.05);
+}
+
+.publish-cta-btn {
+  color: #e8552f;
+  font-weight: 500;
+}

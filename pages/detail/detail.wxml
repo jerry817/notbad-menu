@@ -1,0 +1,135 @@
+<!--pages/detail/detail.wxml 菜谱详情-->
+<view wx:if="{{loading}}" class="loading-inline detail-loading">
+  <view class="loading-dot"></view>
+  <text>加载中…</text>
+</view>
+<view wx:elif="{{recipe}}" class="detail">
+
+  <!-- 封面头部 -->
+  <view class="hero">
+    <image wx:if="{{recipe.coverImageUrl}}" class="hero-img" src="{{recipe.coverImageUrl}}" mode="aspectFill" />
+    <view wx:else class="hero-img"></view>
+    <view class="hero-fav {{isFav ? 'fav-active' : ''}}" bindtap="onToggleFav">
+      {{isFav ? '❤️ 已收藏' : '🤍 收藏'}}
+    </view>
+  </view>
+
+  <view class="page-pad">
+    <!-- 标题与简介 -->
+    <view class="title-block">
+      <view class="recipe-title">{{recipe.title}}</view>
+      <view class="recipe-desc">{{recipe.desc}}</view>
+      <view class="recipe-tags">
+        <text wx:if="{{cuisine}}" class="tag" style="background:{{category.bg}};color:{{category.color}}">{{cuisine.name}}</text>
+        <text wx:else class="tag" style="background:{{category.bg}};color:{{category.color}}">{{category.name}}</text>
+        <text class="tag tag-hot" wx:for="{{recipe.tags}}" wx:key="*this" wx:if="{{index < 3}}">{{item}}</text>
+      </view>
+    </view>
+
+    <!-- 数据面板 -->
+    <view class="card meta-panel">
+      <view class="meta-item">
+        <view class="meta-value">{{recipe.difficulty}}</view>
+        <view class="meta-label">难度</view>
+      </view>
+      <view class="meta-divider"></view>
+      <view class="meta-item">
+        <view class="meta-value">{{recipe.time}} 分钟</view>
+        <view class="meta-label">耗时</view>
+      </view>
+      <view class="meta-divider"></view>
+      <view class="meta-item">
+        <view class="meta-value">{{recipe.servings}}</view>
+        <view class="meta-label">份量</view>
+      </view>
+      <view class="meta-divider"></view>
+      <view class="meta-item">
+        <view class="meta-value">{{recipe.ingredients.length}}</view>
+        <view class="meta-label">食材种</view>
+      </view>
+    </view>
+
+    <!-- 食材清单 -->
+    <view class="section-title">食材清单</view>
+    <view class="card">
+      <view class="ing-row" wx:for="{{recipe.ingredients}}" wx:key="name">
+        <text class="ing-name">{{item.name}}</text>
+        <text class="ing-amount">{{item.amount}}</text>
+      </view>
+    </view>
+
+    <!-- 做法步骤 -->
+    <view class="section-title">做法步骤</view>
+    <view class="step-card" wx:for="{{recipe.steps}}" wx:key="index"
+      bindtap="toggleStep" data-index="{{index}}">
+      <view class="step-head">
+        <view class="step-num {{doneSteps.indexOf(index) > -1 ? 'step-done' : ''}}">{{index + 1}}</view>
+        <view class="step-text {{doneSteps.indexOf(index) > -1 ? 'step-text-done' : ''}}">{{item.text}}</view>
+      </view>
+      <image wx:if="{{item.imageUrl}}" class="step-img" src="{{item.imageUrl}}" mode="aspectFill" />
+    </view>
+
+    <!-- 抖音热门做法视频（仅有视频的菜才渲染） -->
+    <block wx:if="{{douyinVideos.length}}">
+      <view class="section-title">🎬 抖音做法视频</view>
+      <view class="card video-card" wx:for="{{douyinVideos}}" wx:key="url"
+        bindtap="onCopyVideo" data-url="{{item.url}}">
+        <view class="video-icon">▶</view>
+        <view class="video-info">
+          <view class="video-title">{{item.title}}</view>
+          <view class="video-tip">点此复制链接，打开抖音观看</view>
+        </view>
+        <view class="video-copy">复制</view>
+      </view>
+    </block>
+
+    <!-- 小贴士：发布时未填写则不渲染这张卡片 -->
+    <block wx:if="{{recipe.tips && recipe.tips.length}}">
+      <view class="section-title">小贴士</view>
+      <view class="card tips-card">
+        <view class="tip-row" wx:for="{{recipe.tips}}" wx:key="*this">
+          <text class="tip-dot">•</text>
+          <text class="tip-text">{{item}}</text>
+        </view>
+      </view>
+    </block>
+
+    <!-- 作者 -->
+    <view class="card author-card">
+      <view class="col flex-1">
+        <view class="author-name">{{recipe.author.name}}</view>
+        <view class="author-sub">{{recipe.views}} 次浏览 · {{recipe.likes}} 人想做</view>
+      </view>
+      <button class="share-btn" open-type="share">分享</button>
+    </view>
+
+    <!-- 评论区 -->
+    <view class="section-title">厨友讨论（{{comments.length}}）</view>
+    <view class="comment-input card">
+      <input class="comment-field" placeholder="{{isLoggedIn ? '说说你做这道菜的心得…' : '登录后可参与讨论'}}"
+        value="{{commentInput}}" bindinput="onCommentInput" confirm-type="send"
+        bindconfirm="submitComment" />
+      <view class="comment-send" bindtap="submitComment">发布</view>
+    </view>
+    <view wx:if="{{commentsLoading}}" class="loading-inline loading-inline-compact">
+      <view class="loading-dot"></view>
+      <text>加载中…</text>
+    </view>
+    <block wx:else>
+      <view class="card comment-item" wx:for="{{comments}}" wx:key="_id">
+        <view class="col flex-1">
+          <view class="row between">
+            <view class="comment-author">{{item.author}}</view>
+            <text wx:if="{{item.isMine}}" class="comment-delete" data-id="{{item._id}}" bindtap="deleteComment">删除</text>
+          </view>
+          <view class="comment-content">{{item.content}}</view>
+        </view>
+      </view>
+      <view wx:if="{{!comments.length}}" class="empty" style="padding: 40rpx 0;">
+        还没有评论，来做第一个分享心得的人吧～
+      </view>
+    </block>
+
+    <view style="height: 40rpx;"></view>
+  </view>
+</view>
